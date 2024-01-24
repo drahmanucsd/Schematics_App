@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Django Web App</title>
+</head>
+<body>
+<!-- old index code -->
+
+<h1>SCHEMATIC DIAGRAM</h1>
+
+    <form action="/search" method="post">
+        <div>
+            <label for="search_query">Drawing Number:</label>
+            <input type="text" id="search_query" name="search_query">
+        </div>
+        
+        <div>
+            <label for="description">DESCRIPTION:</label>
+            <input type="text" id="description" name="description">
+        </div>
+
+        <div>
+            <label for="revision">REVISION:</label>
+            <input type="text" id="revision" name="revision">
+
+            <label for="sheet_size">SHEET SIZE:</label>
+            <select id="sheet_size" name="sheet_size" onchange="handleSelectionChange(this)">
+                <option value="">Select Size</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="date_drawn">DATE DRAWN:</label>
+            <input type="text" id="date_drawn" name="date_drawn">
+        </div>
+
+        <div>
+            <label for="drawn_by">DRAWN BY:</label>
+            <input type="text" id="drawn_by" name="drawn_by">
+            
+            <label for="approved_by">APPROVED BY:</label>
+            <input type="text" id="approved_by" name="approved_by">
+        </div>
+        <div></div>
+        <div>
+            <label for="operator_type">OPERATOR TYPE:</label>
+            <select id="operator_type" name="operator_type" onchange="handleSelectionChange(this)">
+                <option value="">Select Type</option>
+                <option value="ROTARY VANE">ROTARY VANE</option>
+                <option value="CB SERIES DOUBLE ACTING">CB SERIES DOUBLE ACTING</option>
+                <option value="G-SERIES DOUBLE ACTING">G-SERIES DOUBLE ACTING</option>
+                <option value="GATE (LINEAR)">GATE (LINEAR)</option>
+                <option value="CB SERIES SPRING RETURN">CB SERIES SPRING RETURN</option>
+                <option value="G-SERIES DA W/PUMP CYL (HYD)">G-SERIES DA W/PUMP CYL (HYD)</option>
+                <option value="GATE (LINEAR) SPRING RETURN">GATE (LINEAR) SPRING RETURN</option>
+                <option value="G-SERIES SPRING RETURN">G-SERIES SPRING RETURN</option>
+                <option value="ROTARY PISTON (DS)">ROTARY PISTON (DS)</option>
+                <option value="ROTARY PISTON (RPS)">ROTARY PISTON (RPS)</option>
+                <option value="DANTORQUE SPRING RETURN">DANTORQUE SPRING RETURN</option>
+                <option value="DANTORQUE DOUBLE ACTING">DANTORQUE DOUBLE ACTING</option>
+                <option value="HD SERIES DOUBLE ACTING">HD SERIES DOUBLE ACTING</option>
+                <option value="DANBOR">DANBOR</option>
+                <option value="ROTARY PISTON (S-SERIES)">ROTARY PISTON (S-SERIES)</option>
+                <option value="HD SERIES SPRING RETURN">HD SERIES SPRING RETURN</option>
+                <option value="ROTARY PISTON (S-SERIES) SR">ROTARY PISTON (S-SERIES) SR</option>
+                <option value="ROTARY PISTON (DS) SR">ROTARY PISTON (DS) SR</option>
+                <option value="RPC SERIES SPRING RETURN">RPC SERIES SPRING RETURN</option>
+                <option value="NONE">NONE</option>
+                <option value="G-SERIES DA W/PUMP CYL (PNUE)">G-SERIES DA W/PUMP CYL (PNUE)</option>
+                <option value="G-SERIES SR W/PUMP CYLINDER">G-SERIES SR W/PUMP CYLINDER</option>
+                <option value="RPC SERIES DOUBLE ACTING">RPC SERIES DOUBLE ACTING</option>
+                <option value="DD DOUBLE ACTING">DD DOUBLE ACTING</option>
+                <option value="D-SERIES RACK & PINION SR CW">D-SERIES RACK & PINION SR CW</option>
+                <option value="D-SERIES RACK & PINION SR CCW">D-SERIES RACK & PINION SR CCW</option>
+                <option value="G-SERIES DOUBLE ACTING HYD">G-SERIES DOUBLE ACTING HYD</option>
+                <option value="GAS MOTOR OPERATOR">GAS MOTOR OPERATOR</option>
+                <option value="ROTARY PISTON (RPS) SR">ROTARY PISTON (RPS) SR</option>
+                <option value="T-SERIES DOUBLE ACTING">T-SERIES DOUBLE ACTING</option>
+                <option value="SUPPLIED BY OTHERS">SUPPLIED BY OTHERS</option>
+                <option value="BETTIS CB SERIES">BETTIS CB SERIES</option>
+                <option value="G-SERIES HYDRAULIC DOUBLE ACT">G-SERIES HYDRAULIC DOUBLE ACT</option>
+                <option value="CRANK">CRANK</option>
+                <option value="BETTIS RPC">BETTIS RPC</option>
+                <option value="POSITIONING">POSITIONING</option>
+                <option value="BETTIS D-SERIES">BETTIS D-SERIES</option>
+                <option value="SH SERIES">SH SERIES</option>
+                <option value="G-SERIES SPRING RETURN W/ HW">G-SERIES SPRING RETURN W/ HW</option>
+                <option value="BETTIS DD SERIES DOUBLE ACTING">BETTIS DD SERIES DOUBLE ACTING</option>
+                <option value="SH-SERIES">SH-SERIES</option>
+            </select>
+        </div>
+        <div><p>*need to add special*</p></div>
+        <div>
+
+<!-- old index code end -->
+
+
+<div style="display: flex; justify-content: space-around;">
+
+    
+        <div style="width: 30%; border: 1px solid #ddd; padding: 10px; margin: 10px;"></div>
+        <div style="width: 30%; border: 1px solid #ddd; padding: 10px; margin: 10px;"></div>
+        <div style="width: 30%; border: 1px solid #ddd; padding: 10px; margin: 10px;">
+            <h3>Results:</h3>
+            {% for data in data %}
+            <a href="https://www.example.com/{{data.drawing_number}}">{{data.drawing_number}}<br></a>
+            {% endfor %}
+        </div>
+    
+
+</div>
+
+</body>
+</html>

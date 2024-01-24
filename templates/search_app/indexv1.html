@@ -1,0 +1,26 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Drawing Number</th>
+        <th scope="col">L</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for data in data %}
+      <tr>
+        <td><a href="https://www.example.com/{{data.drawing_number}}">{{data.drawing_number}}</a></td>
+        <td>{{data.descr}}</td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+
+
+
+

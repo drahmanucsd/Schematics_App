@@ -16,13 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from django.urls import re_path
+from search_app import views
+
 
 from search_app import views
 
 router = routers.DefaultRouter()
-router.register(r'Data', views.DataViewSet)
+
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
     path('admin/', admin.site.urls),
+    re_path(r'^search$',views.searchApi, name='search')
+    # path('search/', views.searchApi)
 ]

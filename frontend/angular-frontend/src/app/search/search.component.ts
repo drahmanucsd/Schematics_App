@@ -15,15 +15,17 @@ export class SearchComponent {
   SearchArray : any[] = [];
 
   drawing_number: string = '';
+  descr: string = '';
   
   constructor (private http: HttpClient){
     // this.getData();
   }
   searchRecords(){
     let bodyData = {
-      'drawing_number' : this.drawing_number
+      'drawing_number' : this.drawing_number,
+      'descr' : ''
     };
-    this.http.post('http://127.0.0.1:8000/student',bodyData).subscribe((resultData: any)=>
+    this.http.post('http://127.0.0.1:8000/search',bodyData).subscribe((resultData: any)=>
     {
         console.log(resultData);
         alert('Search Successful');

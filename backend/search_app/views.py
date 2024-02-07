@@ -1,39 +1,42 @@
-from rest_framework import generics, viewsets
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
+from search_app.serializers import SearchSerializer
+from search_app.serializers import DataSerializer
+from search_app.models import Data
 
-from .models import Data
-from .serializers import DataSerializer
+def filtersearch(search_data):
+    drawing_number = search_data.get('drawing_number')
+    descr = search_data.get('descr')
+
+    # Define your filter conditions based on the fields in search_data
+    filter_conditions = Q()
+    if drawing_number:
+        filter_conditions &= Q(drawing_number=drawing_number)
+    if descr:
+        filter_conditions &= Q(descr=descr)
+
+    return Data.objects.filter(filter_conditions)
 
 
-class DataViewSet(viewsets.ModelViewSet):
-    queryset = Data.objects.all()
-    serializer_class = DataSerializer
-
-def search(request):
-    # Extract multiple query parameters
-    field1_value = request.GET.get('field1')
-    field2_value = request.GET.get('field2')
-    # Perform search logic using the parameters, for example:
-    results = YourModel.objects.filter(field1__icontains=field1_value, field2__icontains=field2_value)
-    # Serialize the results if necessary
-    serialized_results = [{'id': obj.id, 'name': obj.name} for obj in results]
-    return JsonResponse(serialized_results, safe=False)
-
-
-
-# from rest_framework import generics
-# from .models import Data
-# from .serializers import DataSerializer
-
-# class DataListView(generics.ListAPIView):
-#     serializer_class = DataSerializer
-
-#     def get_queryset(self):
-#         queryset = Data.objects.all()
-#         search_term = self.request.query_params.get('search', None)
-
-#         if search_term:
-#             queryset = queryset.filter(
-#                 Q(descr__icontains=search_term) | Q(drawn_by__icontains=search_term)
-#             )
-
-#         return queryset
+@csrf_exempt
+def searchApi(request,id=0):
+    if request.method=='GET':
+        search_data=JSONParser().parse(request)
+        search_serializer=SearchSerializer(data=search_data)
+        search_results = filtersearch(search_data)
+        search_serializer=DataSerializer(search_results,many=True)
+        return JsonResponse(search_serializer.data,safe=False)
+    elif request.method=='POST':
+        return JsonResponse({'error': 'POST method is not supported for this endpoint'}, status=405)
+    elif request.method=='PUT':
+        return JsonResponse({'error': 'PUT method is not supported for this endpoint'}, status=405)
+    elif request.method=='DELETE': 
+        return JsonResponse({'error': 'DEL method is not supported for this endpoint'}, status=405)   
+    # elif request.method=='EDIT':
+    #     search_data=JSONParser().parse(request)
+    #     search_serializer=StudentSerializer(data=search_data)
+    #     if search_serializer.is_valid():
+    #         search_serializer.save()
+    #         return JsonResponse("Added Successfully",safe=False)
+    #     return JsonResponse("Failed to Add",safe=False)

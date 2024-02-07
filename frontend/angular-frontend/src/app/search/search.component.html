@@ -1,1 +1,21 @@
 <p>search works!</p>
+<form>
+   
+    <div class="form-group">
+      <label >drawing_number</label>
+      <input type="text"  [(ngModel)]="drawing_number" [ngModelOptions]="{standalone: true}"   class="form-control" id="studentname" name="studentname" placeholder="Enter Name">
+    </div>
+
+      <button type="submit" class="btn btn-primary mt-4" (click)="searchRecords()" >Save</button> &nbsp;
+      <!-- <button type="submit" class="btn btn-warning mt-4" (click)="UpdateRecords()" >Update</button> -->
+  </form>
+
+
+  
+    <tbody>
+        <tr *ngFor="let Item of SearchArray">
+       
+        <td>{{Item.drawing_number}}</td>
+      </tr>
+      
+    </tbody>

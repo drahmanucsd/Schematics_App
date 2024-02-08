@@ -2,6 +2,8 @@
   <mat-toolbar color="primary">
     <span>My App</span>
     <span class="toolbar-spacer"></span>
+    <button mat-flat-button  type="submit"  (click)="searchRecords()" >Clear</button>
+    <button mat-flat-button  type="submit"  (click)="searchRecords()" >Edit</button>
     <button mat-flat-button  type="submit"  (click)="searchRecords()" >Search</button>
   </mat-toolbar>
 </p>
@@ -13,11 +15,13 @@
     <input matInput type="text"  [(ngModel)]="drawing_number" [ngModelOptions]="{standalone: true}"   class="form-control" id="drawing_number" name="drawing_number" placeholder="">
   </mat-form-field>
   <span class = 'toolbar-spacer'></span>
+
   <mat-form-field>
     <mat-label>Operator Type</mat-label>
     <input matInput type="text"  [(ngModel)]="operator_type" [ngModelOptions]="{standalone: true}"   class="form-control" id="operator_type" name="operator_type" placeholder="">
   </mat-form-field>
   <span class = 'toolbar-spacer'></span>
+
   <mat-form-field>
     <mat-label>Date Drawn</mat-label>
     <input matInput [matDatepicker]="picker" [(ngModel)]="date_drawn">
@@ -26,7 +30,8 @@
     <mat-datepicker #picker startView="multi-year"></mat-datepicker>
   </mat-form-field>
   <span class = 'toolbar-spacer'></span>
-  <!-- <form class="example-form">
+
+  <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Sheet Size</mat-label>
       <input type="text"
@@ -36,14 +41,14 @@
              [formControl]="myControl"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        @for (option of filteredOptions | async; track option) {
-          <mat-option [value]="option">{{option}}</mat-option>
-        }
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{ option }}
+        </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-  </form> -->
+  </form>
+  <span class = 'toolbar-spacer'></span>
 
-  
 </div>
 <div class="container">
   <span class = 'toolbar-spacer'></span>
@@ -52,24 +57,40 @@
     <input matInput type="text"  [(ngModel)]="special" [ngModelOptions]="{standalone: true}"   class="form-control" id="special" name="special" placeholder="">
   </mat-form-field>
   <span class = 'toolbar-spacer'></span>
+
   <mat-form-field>
     <mat-label>Description</mat-label>
+    <input matInput type="text"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
+  </mat-form-field>
+  <span class = 'toolbar-spacer'></span>
+
+  <mat-form-field>
+    <mat-label>Approved By</mat-label>
+    <input matInput type="text"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
+  </mat-form-field>
+  <span class = 'toolbar-spacer'></span>
+
+  <mat-form-field>
+    <mat-label>Drawn By</mat-label>
     <input matInput type="text"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
   </mat-form-field>
   <span class = 'toolbar-spacer'></span>
 </div>
 
       
+<mat-grid-list cols="3" rowHeight="1:3">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>
+
+    <mat-list>
+      <mat-list-item><h2>Results:</h2></mat-list-item>
+      <mat-list-item *ngFor="let Item of SearchArray">
+        <a href="https://example.com/{{Item.drawing_number}}" target="_blank">{{Item.drawing_number}}</a>
+      </mat-list-item>
+    </mat-list>    
+  </mat-grid-tile>
+</mat-grid-list>
 
 
 
-
-  <table>
-    <tbody>
-        <tr *ngFor="let Item of SearchArray">
-       
-        <td>{{Item.drawing_number}}</td>
-      </tr>
-      
-    </tbody>
-</table>

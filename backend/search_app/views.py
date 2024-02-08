@@ -12,7 +12,7 @@ def filtersearch(search_data):
     if drawing_number:
         print(drawing_number)
         qq = qq.filter(drawing_number=drawing_number)
-    return qq
+    return qq[:20]
 
 
 @csrf_exempt

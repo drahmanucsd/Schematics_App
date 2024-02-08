@@ -78,20 +78,30 @@ WSGI_APPLICATION = 'MyProject.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Install `r` if you get an error asking for a mysql module
 
-DATABASES = {  
-    'default': {  
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'schematics',  
-        'USER': 'root',  
-        'PASSWORD': 'pass',  
-        'HOST': '192.168.1.107',  
-        'PORT': '3306',  
-        'OPTIONS': {  
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
-        }  
-    }  
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'schematics',
+        'USER': 'root',
+        'PASSWORD': 'pass',
+        'HOST': '192.168.1.107',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    },
+    'test': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test_schematics',  # Use a different database name for tests
+        'USER': 'root',
+        'PASSWORD': 'pass',
+        'HOST': '192.168.1.107',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

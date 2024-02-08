@@ -3,13 +3,9 @@ from .models import Data
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
         model = Data
-        fields = ['drawing_number']
+        fields = '__all__'
 
 class SearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Data
-        # fields = '__all__'
-        fields = [
-            'drawing_number',
-            'descr'
-        ]
+        fields = '__all__'

@@ -1,14 +1,67 @@
+<p>
+  <mat-toolbar color="primary">
+    <span>My App</span>
+    <span class="toolbar-spacer"></span>
+    <button mat-flat-button  type="submit"  (click)="searchRecords()" >Search</button>
+  </mat-toolbar>
+</p>
 
-<form>
-   
-    <div class="form-group">
-      <label >drawing_number</label>
-      <input type="text"  [(ngModel)]="drawing_number" [ngModelOptions]="{standalone: true}"   class="form-control" id="studentname" name="studentname" placeholder="Enter Name">
-    </div>
+<div class="container">
+  <span class = 'toolbar-spacer'></span>
+  <mat-form-field>
+    <mat-label>drawing_number</mat-label>
+    <input matInput type="text"  [(ngModel)]="drawing_number" [ngModelOptions]="{standalone: true}"   class="form-control" id="drawing_number" name="drawing_number" placeholder="">
+  </mat-form-field>
+  <span class = 'toolbar-spacer'></span>
+  <mat-form-field>
+    <mat-label>Operator Type</mat-label>
+    <input matInput type="text"  [(ngModel)]="operator_type" [ngModelOptions]="{standalone: true}"   class="form-control" id="operator_type" name="operator_type" placeholder="">
+  </mat-form-field>
+  <span class = 'toolbar-spacer'></span>
+  <mat-form-field>
+    <mat-label>Date Drawn</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="date_drawn">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+  </mat-form-field>
+  <span class = 'toolbar-spacer'></span>
+  <!-- <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Sheet Size</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Sheet Size"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        @for (option of filteredOptions | async; track option) {
+          <mat-option [value]="option">{{option}}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </form> -->
 
-      <button type="submit" class="btn btn-primary mt-4" (click)="searchRecords()" >Save</button> &nbsp;
-      <!-- <button type="submit" class="btn btn-warning mt-4" (click)="UpdateRecords()" >Update</button> -->
-  </form>
+  
+</div>
+<div class="container">
+  <span class = 'toolbar-spacer'></span>
+  <mat-form-field>
+    <mat-label>Special</mat-label>
+    <input matInput type="text"  [(ngModel)]="special" [ngModelOptions]="{standalone: true}"   class="form-control" id="special" name="special" placeholder="">
+  </mat-form-field>
+  <span class = 'toolbar-spacer'></span>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput type="text"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
+  </mat-form-field>
+  <span class = 'toolbar-spacer'></span>
+</div>
+
+      
+
+
 
 
   <table>

@@ -1,6 +1,9 @@
 .toolbar-spacer {
     flex: 1 1 auto;
 }
+.field-spacer {
+    flex: 1 1 0;
+}
 .toolbar-buttons{
     margin-right: 20;
 }
@@ -23,4 +26,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.text-form{
+    flex-grow:4;
+    margin-right:2%;
+}
+.bold{
+    font-weight: bolder;
+    font-size: 1.2em; /* Adjust the font size as needed */
+    // text-decoration: underline;
 }

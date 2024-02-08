@@ -15,6 +15,12 @@ import { MaterialModule } from '../material/material.module';
 })
 export class SearchComponent implements OnInit {
   panelOpenState = false;
+  gas_hydraulic_panel = false;
+  gas_hydraulic_manual_panel = false;
+
+
+
+
   myControl = new FormControl('');
   options: string[] = ['A', 'B', 'C', 'D','E'];
   filteredOptions!: Observable<string[]>;
@@ -25,6 +31,10 @@ export class SearchComponent implements OnInit {
   operator_type: string = '';
   special: string = '';
   date_drawn: string = '';
+  nitrogen_power: boolean = false;
+  power_regulator: boolean = false;
+  
+
 
 
   constructor(private http: HttpClient) { }

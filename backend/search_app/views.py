@@ -11,8 +11,8 @@ def filtersearch(search_data):
     qq = Data.objects.all()
     if drawing_number:
         print(drawing_number)
-        qq = qq.filter(drawing_number=drawing_number)
-    return qq[:20]
+        qq = qq.filter(drawing_number__icontains=drawing_number)
+    return qq
 
 
 @csrf_exempt

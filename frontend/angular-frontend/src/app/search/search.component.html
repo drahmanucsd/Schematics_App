@@ -1,12 +1,13 @@
 <p>
   <mat-toolbar color="primary">
-    <span>My App</span>
+    <span>Schematic Finder</span>
     <span class="toolbar-spacer"></span>
-    <button mat-flat-button  type="submit"  (click)="searchRecords()" >Clear</button>
-    <button mat-flat-button  type="submit"  (click)="searchRecords()" >Edit</button>
-    <button mat-flat-button  type="submit"  (click)="searchRecords()" >Search</button>
+    <button mat-flat-button  type="submit"  (click)="searchRecords()" style="margin-right: 10px;">Clear</button>
+    <button mat-flat-button  type="submit"  (click)="searchRecords()" style="margin-right: 10px;">Edit</button>
+    <button mat-flat-button  type="submit"  (click)="searchRecords()" class="toolbar-buttons">Search</button>
   </mat-toolbar>
 </p>
+
 
 <div class="container">
   <span class = 'toolbar-spacer'></span>
@@ -78,19 +79,120 @@
 </div>
 
       
-<mat-grid-list cols="3" rowHeight="1:3">
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>
+<div class="grid">
+  <mat-card class="cards">
+    <h2 class="center">Power:</h2>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Gas Hydraulic (Tanks)
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+        <mat-slide-toggle>Power Regulator</mat-slide-toggle>
+        <mat-slide-toggle>Pressure Switch</mat-slide-toggle>
+        <mat-slide-toggle>Leveling Check </mat-slide-toggle>
+        <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+      </mat-expansion-panel>
 
-    <mat-list>
-      <mat-list-item><h2>Results:</h2></mat-list-item>
-      <mat-list-item *ngFor="let Item of SearchArray">
-        <a href="https://example.com/{{Item.drawing_number}}" target="_blank">{{Item.drawing_number}}</a>
-      </mat-list-item>
-    </mat-list>    
-  </mat-grid-tile>
-</mat-grid-list>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                          (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Central Hydraulic
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+        <mat-slide-toggle>Power Regulator</mat-slide-toggle>
+        <mat-slide-toggle>Pressure Switch</mat-slide-toggle>
+        <mat-slide-toggle>Leveling Check </mat-slide-toggle>
+        <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+      </mat-expansion-panel>
 
+      <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+Supply
+</mat-panel-title>
+</mat-expansion-panel-header>
+<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+<mat-slide-toggle>Power Regulator</mat-slide-toggle>
+<mat-slide-toggle>Pressure Switch</mat-slide-toggle>
+<mat-slide-toggle>Leveling Check </mat-slide-toggle>
+<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+</mat-expansion-panel>
 
+<mat-expansion-panel (opened)="panelOpenState = true"
+(closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+Air Motor
+</mat-panel-title>
+</mat-expansion-panel-header>
+<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+<mat-slide-toggle>Power Regulator</mat-slide-toggle>
+<mat-slide-toggle>Pressure Switch</mat-slide-toggle>
+<mat-slide-toggle>Leveling Check </mat-slide-toggle>
+<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+</mat-expansion-panel>
 
+<mat-expansion-panel (opened)="panelOpenState = true"
+(closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+Electric Motor
+</mat-panel-title>
+</mat-expansion-panel-header>
+<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+<mat-slide-toggle>Power Regulator</mat-slide-toggle>
+<mat-slide-toggle>Pressure Switch</mat-slide-toggle>
+<mat-slide-toggle>Leveling Check </mat-slide-toggle>
+<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+</mat-expansion-panel>
+
+<mat-expansion-panel (opened)="panelOpenState = true"
+(closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+Self Contained
+</mat-panel-title>
+</mat-expansion-panel-header>
+<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+<mat-slide-toggle>Power Regulator</mat-slide-toggle>
+<mat-slide-toggle>Pressure Switch</mat-slide-toggle>
+<mat-slide-toggle>Leveling Check </mat-slide-toggle>
+<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+</mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+      <mat-panel-title>
+      Pneumatic (No Tanks)
+      </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+      <mat-slide-toggle>Power Regulator</mat-slide-toggle>
+      <mat-slide-toggle>Pressure Switch</mat-slide-toggle>
+      <mat-slide-toggle>Leveling Check </mat-slide-toggle>
+      <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+  <mat-card class="cards">
+    <h2 class="center">Function:</h2>
+
+  </mat-card>
+  <mat-card class="cards">
+    <h2 class="center">Results:</h2>
+    <div class="center">
+      <mat-list class="list-results">
+        <mat-list-item *ngFor="let Item of SearchArray">
+          <a href="https://example.com/{{Item.drawing_number}}" target="_blank">{{Item.drawing_number}}</a>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card> 
+</div>

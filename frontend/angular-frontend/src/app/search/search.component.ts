@@ -14,6 +14,7 @@ import { MaterialModule } from '../material/material.module';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  panelOpenState = false;
   myControl = new FormControl('');
   options: string[] = ['A', 'B', 'C', 'D','E'];
   filteredOptions!: Observable<string[]>;

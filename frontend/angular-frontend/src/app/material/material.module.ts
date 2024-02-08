@@ -10,6 +10,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 const MaterialComponents = [
   MatButtonModule,
   MatFormFieldModule,
@@ -22,7 +26,10 @@ const MaterialComponents = [
   ReactiveFormsModule,
   FormsModule,
   MatGridListModule,
-  MatListModule
+  MatListModule,
+  MatExpansionModule,
+  MatCardModule,
+  MatSlideToggleModule
 ]
 
 @NgModule({

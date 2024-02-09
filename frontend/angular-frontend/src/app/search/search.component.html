@@ -68,13 +68,13 @@
 
   <mat-form-field class="text-form">
     <mat-label>Approved By</mat-label>
-    <input matInput type="text"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
+    <input matInput type="text"  [(ngModel)]="approved_by" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
   </mat-form-field>
   <span class = 'field-spacer'></span>
 
   <mat-form-field class="text-form">
     <mat-label>Drawn By</mat-label>
-    <input matInput type="text"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
+    <input matInput type="text"  [(ngModel)]="drawn_by" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
   </mat-form-field>
   <span class = 'field-spacer'></span>
 </div>
@@ -189,21 +189,31 @@ Self Contained
     <h2 class="center">Function:</h2>
 
     <mat-accordion multi>
-      <mat-expansion-panel (opened)="gas_hydraulic_manual_panel = true"
-      (closed)="gas_hydraulic_manual_panel = false" hideToggle>
+      <mat-expansion-panel [class.ght]="gas_hydraulic_panel==false" (opened)="gas_hydraulic_electric_remote_2_way_panel = true"
+      (closed)="gas_hydraulic_electric_remote_2_way_panel = false" hideToggle>
         <mat-expansion-panel-header>
-          <mat-panel-title [class.bold]="gas_hydraulic_manual_panel">
-            Manual
+          <mat-panel-title [class.bold]="gas_hydraulic_electric_remote_2_way_panel">
+            Electric Remote 2 Way
           </mat-panel-title>
           <mat-panel-description>
             Gas Hydraulic
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <mat-slide-toggle [(ngModel)]="nitrogen_power">Nitrogen Power</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="power_regulator">Power Regulator</mat-slide-toggle>
-        <mat-slide-toggle>Pressure Switch</mat-slide-toggle>
-        <mat-slide-toggle>Leveling Check </mat-slide-toggle>
-        <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+        <mat-list>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="lockout">Lockout</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="latching_feature">Latching Feature</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="low_pressure_solenoid">Low Pressure Soleniod</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="high_pressure_solenoid">High Pressure Soleniod</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="redundant_solenoid">Redundant Solenoid</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="trigger_valve">Trigger Valve</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="momentary_impulse">Momentary Impulse</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="pilot_isolation_valve">Pilot Isolation Valve</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="sequencing">Sequencing</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="low_pressure_solenoid">Low Pressure Soleniod</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="double_holding_valve">Double Holding Valve</mat-slide-toggle></mat-list-item>
+          </mat-list>
+          
+
       </mat-expansion-panel>
     </mat-accordion>
 

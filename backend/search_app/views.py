@@ -12,6 +12,7 @@ def filtersearch(search_data):
     if drawing_number:
         print(drawing_number)
         qq = qq.filter(drawing_number__icontains=drawing_number)
+    print(search_data.get('date_drawn'))
     return qq
 
 

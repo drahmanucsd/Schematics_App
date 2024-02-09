@@ -7,12 +7,19 @@ from search_app.models import Data
 def filtersearch(search_data):
     drawing_number = search_data.get('drawing_number')
     descr = search_data.get('descr')
+    date_drawn = search_data.get('date_drawn')
+    operator_type = search_data.get('operator_type')
     # Define your filter conditions based on the fields in search_data
     qq = Data.objects.all()
     if drawing_number:
-        print(drawing_number)
         qq = qq.filter(drawing_number__icontains=drawing_number)
-    print(search_data.get('date_drawn'))
+    if operator_type:
+        qq = qq.filter(operator_type__icontains=operator_type)
+    if descr:
+        print(descr)
+        qq = qq.filter(descr__icontains =descr)
+    if date_drawn:
+        qq = qq.filter(date_drawn=date_drawn[2:10])
     return qq
 
 

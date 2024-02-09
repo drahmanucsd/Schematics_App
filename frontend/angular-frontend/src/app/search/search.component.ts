@@ -63,7 +63,16 @@ export class SearchComponent implements OnInit {
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
-
+  clearFields(){
+    this.drawing_number = '';
+    this.descr = '';
+    this.date_drawn = '';
+    this.special = '';
+    this.operator_type = '';
+    this.approved_by = '';
+    this.drawn_by = '';
+    this.myControl.setValue('');
+  }
   searchRecords() {
     let bodyData = {
       'drawing_number': this.drawing_number,

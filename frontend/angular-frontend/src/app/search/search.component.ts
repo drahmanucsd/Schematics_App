@@ -5,6 +5,7 @@ import { startWith, map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';  
 import { MaterialModule } from '../material/material.module';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-search',
@@ -17,15 +18,21 @@ export class SearchComponent implements OnInit {
   panelOpenState = false;
   gas_hydraulic_panel = false;
   gas_hydraulic_manual_panel = false;
-  gas_hydraulic_electric_remote_2_way_panel = false;
-
-
+  electric_remote_2_way_panel = false;
+  central_hydraulic_panel = false;
+  electric_failsafe_panel = false;
+  supply_panel = false;
+  air_motor_panel = false;
+  electric_motor_panel = false;
+  self_contained_panel = false;
+  pneumatic_panel = false;
 
 
   myControl = new FormControl('');
   options: string[] = ['A', 'B', 'C', 'D','E'];
   filteredOptions!: Observable<string[]>;
 
+  total_results: string = '';
   SearchArray: any[] = [];
   drawing_number: string = '';
   descr: string = '';
@@ -46,11 +53,18 @@ export class SearchComponent implements OnInit {
   double_holding_valve: boolean = false;
   redundant_solenoid: boolean = false;
   momentary_impulse: boolean = false;
+  pilot_regular: boolean = false;
+  pilot_valve: boolean = false;
   
+  fail_close: boolean = false;
+  dashpot: boolean = false;
+  pilot_regulator: boolean = false;
+  solenoid: boolean = false;
+
+  electric_remote_2_way_view: number = 0;
 
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private location: Location) { }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -58,20 +72,13 @@ export class SearchComponent implements OnInit {
       map(value => this._filter(value || '')),
     );
   }
-
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
   clearFields(){
-    this.drawing_number = '';
-    this.descr = '';
-    this.date_drawn = '';
-    this.special = '';
-    this.operator_type = '';
-    this.approved_by = '';
-    this.drawn_by = '';
-    this.myControl.setValue('');
+    window.location.reload();
+
   }
   searchRecords() {
     let bodyData = {
@@ -82,12 +89,15 @@ export class SearchComponent implements OnInit {
       'operator_type': this.operator_type,
       'drawn_by': this.drawn_by,
       'approved_by' :this.approved_by,
-      'special': this.special
+      'special': this.special,
+      'ght': this.gas_hydraulic_panel,
+      'latching_feature': this.latching_feature
     };
     this.http.post('http://127.0.0.1:8000/search', bodyData).subscribe((resultData: any) => {
       console.log(resultData);
       alert('Search Successful');
-      this.SearchArray = resultData;
+      this.total_results = resultData.total_results;
+      this.SearchArray = resultData.search_results;
     });
   }
 }

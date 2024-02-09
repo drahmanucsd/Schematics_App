@@ -7,15 +7,15 @@ def etn(column):
     return result-1
 
 def find_column_difference(csv_file):
-    a= etn('CY')
-    b= etn('DN')
+    a= etn('CP')
+    b= etn('DS')
     differences = []
     with open(csv_file, 'r') as file:
         reader = csv.reader(file)
         line_number = 1
         for row in reader:
             try:
-                if row[a] != row[b] and row[b] and row[a]=='':
+                if row[a] == row[b] and row[b] and row[a]=='Y':
                     differences.append((line_number, row[a], row[b]))
             except (ValueError, IndexError):
                 print(f"Issue parsing line {line_number}: {row}")

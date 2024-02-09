@@ -9,6 +9,8 @@ def filtersearch(search_data):
     descr = search_data.get('descr')
     date_drawn = search_data.get('date_drawn')
     operator_type = search_data.get('operator_type')
+    ght = search_data.get('ght')
+    latching_feature = search_data.get('latching_feature')
     # Define your filter conditions based on the fields in search_data
     qq = Data.objects.all()
     if drawing_number:
@@ -20,7 +22,11 @@ def filtersearch(search_data):
         qq = qq.filter(descr__icontains =descr)
     if date_drawn:
         qq = qq.filter(date_drawn=date_drawn[2:10])
-    return qq
+    if ght:
+        if latching_feature:
+            qq = qq.filter(aa="Y")
+        qq = qq.filter(e_d='Y')
+    return qq[:100],len(qq)
 
 
 @csrf_exempt
@@ -31,8 +37,12 @@ def searchApi(request,id=0):
         search_data=JSONParser().parse(request)
         search_serializer=SearchSerializer(data=search_data)
         search_results = filtersearch(search_data)
-        search_serializer=SearchSerializer(search_results,many=True)
-        return JsonResponse(search_serializer.data,safe=False)
+        search_serializer=SearchSerializer(search_results[0],many=True)
+        data_to_send = {
+            'search_results': search_serializer.data,
+            'total_results':search_results[1]
+        }
+        return JsonResponse(data_to_send,safe=False)
 
     elif request.method=='PUT':
         return JsonResponse({'error': 'PUT method is not supported for this endpoint'}, status=405)

@@ -8,84 +8,89 @@
   </mat-toolbar>
 </p>
 
-
-<div class="container">
-  <span class = 'field-spacer'></span>
-  <mat-form-field class="text-form">
-    <mat-label>Drawing Number</mat-label>
-    <input matInput type="text"  [(ngModel)]="drawing_number" [ngModelOptions]="{standalone: true}"   class="form-control" id="drawing_number" name="drawing_number" placeholder="">
-  </mat-form-field>
-  <span class = 'field-spacer'></span>
-
-  <mat-form-field class="text-form">
-    <mat-label>Operator Type</mat-label>
-    <input matInput type="text"  [(ngModel)]="operator_type" [ngModelOptions]="{standalone: true}"   class="form-control" id="operator_type" name="operator_type" placeholder="">
-  </mat-form-field>
-  <span class = 'field-spacer'></span>
-
-  <mat-form-field class="text-form">
-    <mat-label>Date Drawn</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="date_drawn">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker startView="multi-year"></mat-datepicker>
-  </mat-form-field>
-  <span class = 'field-spacer'></span>
-
-  <form class="text-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Sheet Size</mat-label>
-      <input type="text"
-             placeholder="Pick one"
-             aria-label="Sheet Size"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{ option }}
-        </mat-option>
-      </mat-autocomplete>
+<div class="imput-fields">
+  <div class="container">
+    <span class = 'field-spacer'></span>
+    <!-- Drawing Number  -->
+    <mat-form-field class="text-form">
+      <mat-label>Drawing Number</mat-label>
+      <input matInput type="text"  [(ngModel)]="drawing_number" [ngModelOptions]="{standalone: true}"   class="form-control" id="drawing_number" name="drawing_number" placeholder="">
     </mat-form-field>
-  </form>
-  <span class = 'field-spacer'></span>
+    <span class = 'field-spacer'></span>
+    <!-- Operator Type -->
+    <mat-form-field class="text-form">
+      <mat-label>Operator Type</mat-label>
+      <input matInput type="text"  [(ngModel)]="operator_type" [ngModelOptions]="{standalone: true}"   class="form-control" id="operator_type" name="operator_type" placeholder="">
+    </mat-form-field>
+    <span class = 'field-spacer'></span>
+    <!-- Date Drawn -->
+    <mat-form-field class="text-form">
+      <mat-label>Date Drawn</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="date_drawn">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+    </mat-form-field>
+    <span class = 'field-spacer'></span>
+    <!-- Sheet Size -->
+    <form class="text-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Sheet Size</mat-label>
+        <input type="text"
+              placeholder="Pick one"
+              aria-label="Sheet Size"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <span class = 'field-spacer'></span>
 
+  </div>
+
+  <div class="container">
+    <span class = 'field-spacer'></span>
+    <!-- Special -->
+    <mat-form-field class="text-form">
+      <mat-label>Special</mat-label>
+      <input matInput type="text"  [(ngModel)]="special" [ngModelOptions]="{standalone: true}"   class="form-control" id="special" name="special" placeholder="">
+    </mat-form-field>
+    <span class = 'field-spacer'></span>
+    <!-- Description -->
+    <mat-form-field class="text-form">
+      <mat-label>Description</mat-label>
+      <input matInput type="text"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
+    </mat-form-field>
+    <span class = 'field-spacer'></span>
+    <!-- Approved By -->
+    <mat-form-field class="text-form">
+      <mat-label>Approved By</mat-label>
+      <input matInput type="text"  [(ngModel)]="approved_by" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
+    </mat-form-field>
+    <span class = 'field-spacer'></span>
+    <!-- Drawn By -->
+    <mat-form-field class="text-form">
+      <mat-label>Drawn By</mat-label>
+      <input matInput type="text"  [(ngModel)]="drawn_by" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
+    </mat-form-field>
+    <span class = 'field-spacer'></span>
+  </div>
 </div>
-
-<div class="container">
-  <span class = 'field-spacer'></span>
-  <mat-form-field class="text-form">
-    <mat-label>Special</mat-label>
-    <input matInput type="text"  [(ngModel)]="special" [ngModelOptions]="{standalone: true}"   class="form-control" id="special" name="special" placeholder="">
-  </mat-form-field>
-  <span class = 'field-spacer'></span>
-
-  <mat-form-field class="text-form">
-    <mat-label>Description</mat-label>
-    <input matInput type="text"  [(ngModel)]="descr" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
-  </mat-form-field>
-  <span class = 'field-spacer'></span>
-
-  <mat-form-field class="text-form">
-    <mat-label>Approved By</mat-label>
-    <input matInput type="text"  [(ngModel)]="approved_by" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
-  </mat-form-field>
-  <span class = 'field-spacer'></span>
-
-  <mat-form-field class="text-form">
-    <mat-label>Drawn By</mat-label>
-    <input matInput type="text"  [(ngModel)]="drawn_by" [ngModelOptions]="{standalone: true}"   class="form-control" id="descr" name="descr" placeholder="">
-  </mat-form-field>
-  <span class = 'field-spacer'></span>
-</div>
-
       
 <div class="grid">
+  <!-- Left Card -->
   <mat-card class="cards">
-    <h2 class="center">Power:</h2>
+    <div class="card-header">
+      <h2 class="center">Power:</h2>
+    </div>
     <mat-accordion multi>
-      <mat-expansion-panel (opened)="gas_hydraulic_panel = true"
-      (closed)="gas_hydraulic_panel = false" hideToggle>
+      <mat-expansion-panel (opened)="gas_hydraulic_panel = true; electric_remote_2_way_view = electric_remote_2_way_view +1"
+      (closed)="gas_hydraulic_panel = false; electric_remote_2_way_view = electric_remote_2_way_view -1" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title [class.bold]="gas_hydraulic_panel">
             Gas Hydraulic (Tanks)
@@ -100,99 +105,90 @@
         </mat-list>
       </mat-expansion-panel>
 
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                          (closed)="panelOpenState = false">
+      <mat-expansion-panel (opened)="central_hydraulic_panel = true; electric_remote_2_way_view = electric_remote_2_way_view +1"
+      (closed)="central_hydraulic_panel = false; electric_remote_2_way_view = electric_remote_2_way_view -1" hideToggle>
         <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title [class.bold]="central_hydraulic_panel">
             Central Hydraulic
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-        <mat-slide-toggle>Power Regulator</mat-slide-toggle>
-        <mat-slide-toggle>Pressure Switch</mat-slide-toggle>
-        <mat-slide-toggle>Leveling Check </mat-slide-toggle>
-        <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+        <mat-list>
+
+        </mat-list>
       </mat-expansion-panel>
 
-      <mat-expansion-panel (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false">
-<mat-expansion-panel-header>
-<mat-panel-title>
-Supply
-</mat-panel-title>
-</mat-expansion-panel-header>
-<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-<mat-slide-toggle>Power Regulator</mat-slide-toggle>
-<mat-slide-toggle>Pressure Switch</mat-slide-toggle>
-<mat-slide-toggle>Leveling Check </mat-slide-toggle>
-<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-</mat-expansion-panel>
+      <mat-expansion-panel (opened)="supply_panel = true;"
+      (closed)="supply_panel = false;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title [class.bold]="central_hydraulic_panel">
+            Supply
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
 
-<mat-expansion-panel (opened)="panelOpenState = true"
-(closed)="panelOpenState = false">
-<mat-expansion-panel-header>
-<mat-panel-title>
-Air Motor
-</mat-panel-title>
-</mat-expansion-panel-header>
-<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-<mat-slide-toggle>Power Regulator</mat-slide-toggle>
-<mat-slide-toggle>Pressure Switch</mat-slide-toggle>
-<mat-slide-toggle>Leveling Check </mat-slide-toggle>
-<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-</mat-expansion-panel>
+        </mat-list>
+      </mat-expansion-panel>
 
-<mat-expansion-panel (opened)="panelOpenState = true"
-(closed)="panelOpenState = false">
-<mat-expansion-panel-header>
-<mat-panel-title>
-Electric Motor
-</mat-panel-title>
-</mat-expansion-panel-header>
-<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-<mat-slide-toggle>Power Regulator</mat-slide-toggle>
-<mat-slide-toggle>Pressure Switch</mat-slide-toggle>
-<mat-slide-toggle>Leveling Check </mat-slide-toggle>
-<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-</mat-expansion-panel>
+      <mat-expansion-panel (opened)="air_motor_panel = true;"
+      (closed)="air_motor_panel = false;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title [class.bold]="central_hydraulic_panel">
+            air_motor
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
 
-<mat-expansion-panel (opened)="panelOpenState = true"
-(closed)="panelOpenState = false">
-<mat-expansion-panel-header>
-<mat-panel-title>
-Self Contained
-</mat-panel-title>
-</mat-expansion-panel-header>
-<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-<mat-slide-toggle>Power Regulator</mat-slide-toggle>
-<mat-slide-toggle>Pressure Switch</mat-slide-toggle>
-<mat-slide-toggle>Leveling Check </mat-slide-toggle>
-<mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-</mat-expansion-panel>
+        </mat-list>
+      </mat-expansion-panel>
 
-      <mat-expansion-panel (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-      <mat-panel-title>
-      Pneumatic (No Tanks)
-      </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
-      <mat-slide-toggle>Power Regulator</mat-slide-toggle>
-      <mat-slide-toggle>Pressure Switch</mat-slide-toggle>
-      <mat-slide-toggle>Leveling Check </mat-slide-toggle>
-      <mat-slide-toggle>Nitrogen Power</mat-slide-toggle>
+      <mat-expansion-panel (opened)="electric_motor_panel = true;"
+      (closed)="electric_motor_panel = false;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title [class.bold]="central_hydraulic_panel">
+            electric_motor
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+
+        </mat-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="self_contained_panel = true;"
+      (closed)="self_contained_panel = false;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title [class.bold]="central_hydraulic_panel">
+            self_contained
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+
+        </mat-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="pneumatic_panel = true;"
+      (closed)="pneumatic_panel = false;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title [class.bold]="central_hydraulic_panel">
+            pneumatic
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+
+        </mat-list>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card>
+  <!-- Middle Card -->
   <mat-card class="cards">
-    <h2 class="center">Function:</h2>
-
+    <div class="card-header">
+      <h2 class="center">Function:</h2>
+    </div>
     <mat-accordion multi>
-      <mat-expansion-panel [class.ght]="gas_hydraulic_panel==false" (opened)="gas_hydraulic_electric_remote_2_way_panel = true"
-      (closed)="gas_hydraulic_electric_remote_2_way_panel = false" hideToggle>
+
+      <mat-expansion-panel [class.ght]="electric_remote_2_way_view<=0" (opened)="electric_remote_2_way_panel = true"
+      (closed)="electric_remote_2_way_panel = false" hideToggle>
         <mat-expansion-panel-header>
-          <mat-panel-title [class.bold]="gas_hydraulic_electric_remote_2_way_panel">
+          <mat-panel-title [class.bold]="electric_remote_2_way_panel">
             Electric Remote 2 Way
           </mat-panel-title>
           <mat-panel-description>
@@ -209,17 +205,44 @@ Self Contained
           <mat-list-item><mat-slide-toggle [(ngModel)]="momentary_impulse">Momentary Impulse</mat-slide-toggle></mat-list-item>
           <mat-list-item><mat-slide-toggle [(ngModel)]="pilot_isolation_valve">Pilot Isolation Valve</mat-slide-toggle></mat-list-item>
           <mat-list-item><mat-slide-toggle [(ngModel)]="sequencing">Sequencing</mat-slide-toggle></mat-list-item>
-          <mat-list-item><mat-slide-toggle [(ngModel)]="low_pressure_solenoid">Low Pressure Soleniod</mat-slide-toggle></mat-list-item>
           <mat-list-item><mat-slide-toggle [(ngModel)]="double_holding_valve">Double Holding Valve</mat-slide-toggle></mat-list-item>
-          </mat-list>
-          
-
+          <mat-list-item><mat-slide-toggle [(ngModel)]="pilot_regular">Pilot Regular</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="pilot_valve">Pilot Valve</mat-slide-toggle></mat-list-item>
+        </mat-list>
       </mat-expansion-panel>
+
+      <mat-expansion-panel [class.ght]="electric_remote_2_way_view<=0" (opened)="electric_failsafe_panel = true"
+      (closed)="electric_failsafe_panel = false" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title [class.bold]="electric_failsafe_panel">
+            Electric Failsafe
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="latching_feature">Latching Feature</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="fail_close">Fail Close</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="dashpot">Dashpot</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="low_pressure_solenoid">Low Pressure Soleniod</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="pilot_isolation_valve">Pilot Isolation Valve</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="pilot_regulator">Pilot Regulator</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="double_holding_valve">Double Holding Valve</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="solenoid">Solenoid</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="high_pressure_solenoid">High Pressure Soleniod</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="redundant_solenoid">Redundant Solenoid</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="trigger_valve">Trigger Valve</mat-slide-toggle></mat-list-item>
+          <mat-list-item><mat-slide-toggle [(ngModel)]="pilot_valve">Pilot Valve</mat-slide-toggle></mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+
     </mat-accordion>
 
   </mat-card>
+  <!-- Right Card -->
   <mat-card class="cards">
+    <div class="card-header">
     <h2 class="center">Results:</h2>
+    <div class="center">Number of Results: {{total_results}}</div> 
+    </div>
     <div class="center">
       <mat-list class="list-results">
         <mat-list-item *ngFor="let Item of SearchArray">

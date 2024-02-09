@@ -13,10 +13,13 @@
 }  
 .grid{
     display: flex;
+    flex-direction: row;
+    min-height: 70%;
 }
 .cards{
-    margin-right: 10px;
+    margin: 10px;
     flex: 1 ;
+    
 }
 .center{
     display: flex;
@@ -38,4 +41,7 @@
 }
 .ght{
     display: none;
+}
+.card-header{
+    margin-top: 1%;
 }
